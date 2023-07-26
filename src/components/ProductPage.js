@@ -7,26 +7,28 @@ const ProductPage = () => {
   const [data, setData] = useState(productData);
 
   function search(e) {
-    const filterValue = e.target.value.toLowerCase();
-    const onlyInStock = document.getElementById('inStockCheckbox').checked
+    const searchValue = e.target.value.toLowerCase();
+    const isChecked = document.getElementById('checkbox').checked;
 
     const newArray = productData.filter((item) => {
-      const nameMatches = item.name.toLowerCase().includes(filterValue.toLowerCase());
-      const inStock = onlyInStock ? item.inStock : true;
+      const nameMatches = item.name
+        .toLowerCase()
+        .includes(searchValue.toLowerCase());
+      const inStock = isChecked ? item.inStock : true;
 
-      return nameMatches && inStock
+      return nameMatches && inStock;
     });
 
-    console.log(newArray)
+    console.log(newArray);
 
-    setData(newArray)
+    setData(newArray);
   }
 
   function inStock(e) {
     const newArray = productData.filter((item) => {
-      return item.inStock
-    })
-    e.target.checked ? setData(newArray) : setData(productData)
+      return item.inStock;
+    });
+    e.target.checked ? setData(newArray) : setData(productData);
   }
 
   return (
