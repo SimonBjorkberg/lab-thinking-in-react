@@ -1,5 +1,5 @@
 const ProductTable = (props) => {
-  const { data, setData, newData } = props;
+  const { data } = props;
 
   return (
     <div className="product-table mt-5">
@@ -11,7 +11,7 @@ const ProductTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {newData.map((item) => {
+          {data.map((item) => {
             return (
               <tr key={item.id}>
                 {item.inStock ? (

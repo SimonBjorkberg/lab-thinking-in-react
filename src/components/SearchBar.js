@@ -1,24 +1,15 @@
 const SearchBar = (props) => {
-  const { data, setNewData, newData } = props;
-
-  function filterData(e) {
-    const newArray = data.filter((item) => {
-      return item.inStock;
-    });
-    e.target.checked ? setNewData(newArray) : setNewData(data)
-  }
-
-  function search(e) {
-        
-  }
+  const { search, inStock } = props;
 
   return (
     <div className="search-bar">
       <h1>Search</h1>
-      <input type="text" className="border" onChange={(e) => search(e)} />
+      <input type="text" className="border" onChange={(e) => search(e, false)} />
       <div>
-        <input type="checkbox" onChange={(e) => filterData(e)} />
-        <p>Only show products in stock</p>
+      <label htmlFor="inStockCheckbox">
+        <input type="checkbox" id="inStockCheckbox" onChange={(e) => inStock(e)}/>
+        Only show products in stock
+        </label>
       </div>
     </div>
   );
