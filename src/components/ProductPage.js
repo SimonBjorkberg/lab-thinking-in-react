@@ -11,12 +11,12 @@ const ProductPage = () => {
     const isChecked = document.getElementById('checkbox').checked;
 
     const productArray = productData.filter((product) => {
-      const nameMatches = product.name.toLowerCase().includes(searchValue.toLowerCase());
-      const inStock = isChecked ? product.inStock : true;
-
-      console.log(inStock)
-
-      return nameMatches && inStock;
+      if (!isChecked) {
+        return product.name.toLowerCase().includes(searchValue);
+      } 
+      else {
+        return product.inStock && product.name.toLowerCase().includes(searchValue);
+      }
     });
 
     setData(productArray);
@@ -31,7 +31,7 @@ const ProductPage = () => {
 
   return (
     <div className="product-page">
-      <h1 className="text-3xl font-bold">IronStore</h1>
+      <h1 className="text-3xl font-bold text-green-600">IronStore</h1>
       <SearchBar search={search} inStock={inStock} />
       <ProductTable data={data} setData={setData} productData={productData} />
     </div>
